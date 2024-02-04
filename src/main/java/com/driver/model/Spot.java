@@ -14,6 +14,7 @@ public class Spot {
     private int PricePerHour;
     private boolean occupied;
 
+
     @ManyToOne
     @JoinColumn
     private ParkingLot parkingLot;//it will automatically store id
@@ -62,7 +63,7 @@ public class Spot {
         PricePerHour = pricePerHour;
     }
 
-    public boolean isOccupied() {
+    public boolean getOccupied() {
         return occupied;
     }
 

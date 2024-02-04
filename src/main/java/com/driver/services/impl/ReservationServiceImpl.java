@@ -51,7 +51,7 @@ public class ReservationServiceImpl implements ReservationService {
             }else{
                 wheels = 24;
             }
-            if(!spot.isOccupied() && numberOfWheels <= wheels && (timeInHours * spot.getPricePerHour() < minCost)){
+            if(!spot.getOccupied() && numberOfWheels <= wheels && (timeInHours * spot.getPricePerHour() < minCost)){
                 spotObj = spot;
                 minCost = timeInHours * spot.getPricePerHour();
             }
