@@ -36,9 +36,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         ParkingLot parkingLotObj = parkingLotOpt.get();
 
         Spot spotEntityObj = new Spot();
-        if(numberOfWheels == 2){
+        if(numberOfWheels <= 2){
             spotEntityObj.setSpotType(SpotType.TWO_WHEELER);
-        }else if(numberOfWheels == 4){
+        }else if(numberOfWheels <= 4){
             spotEntityObj.setSpotType(SpotType.FOUR_WHEELER);
         }else{
             spotEntityObj.setSpotType(SpotType.OTHERS);
@@ -48,8 +48,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         List<Spot> spotList = parkingLotObj.getSpotList();
         spotList.add(spotEntityObj);
         parkingLotObj.setSpotList(spotList);
+        Spot toReturnSpot = spotRepository1.save(spotEntityObj);
         parkingLotRepository1.save(parkingLotObj);
-        return spotEntityObj;
+        return toReturnSpot;
     }
 
     @Override
